@@ -4,10 +4,10 @@ import { Ok } from '../Helper/returnHelper.js'
 
 const addNews = (news) => {
   let sql = `insert into NEWS(ID,GROUP_ID,CONTENT)
-              values($Id,$groupId,$content)
+              values($id,$groupId,$content)
     `
   runSql(undefined, sql, {
-    $Id: createGuid(),
+    $id: createGuid(),
     $groupId: news["groupId"],
     $content: news["content"]
   });
