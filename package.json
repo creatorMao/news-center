@@ -1,0 +1,19 @@
+{
+  "name": "news-center",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/creatorMao/news-center.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/creatorMao/news-center/issues"
+  },
+  "homepage": "https://github.com/creatorMao/news-center#readme"
+}
