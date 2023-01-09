@@ -2,6 +2,22 @@ import sqlite3 from 'sqlite3'
 
 let currentDb = null;
 
+const initDb = async (dbFilePath, createTableSqlList) => {
+
+  console.log('正在连接数据库');
+  const db = connectDb(dbFilePath);
+  console.log('数据库连接成功');
+
+  console.log('正在初始化数据库');
+  for (let i = 0; i < createTableSqlList.length; i++) {
+    let table = createTableSqlList[i];
+    await createTable(db, table.tableCode, table.tableName, table.sql);
+  }
+  console.log('数据库初始化成功');
+
+  return db;
+}
+
 const connectDb = (dbFilePath) => {
   currentDb = new sqlite3.Database(dbFilePath, err => {
   })
@@ -45,6 +61,7 @@ const runSql = (db = currentDb, sql, param = {}) => {
 }
 
 export {
+  initDb,
   connectDb,
   createTable,
   runSql,

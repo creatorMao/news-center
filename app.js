@@ -1,26 +1,11 @@
 import express from 'express'
-import { connectDb, createTable } from './Helper/dbHelper.js'
+import { initDb } from './Helper/dbHelper.js'
+import { getParam } from './Helper/httpHelper.js'
 import { createTableSqlList } from './Database/createTable.js'
 import {
   addNews,
   getLatestNews
 } from './Service/news.js'
-
-const initDb = async () => {
-
-  console.log('正在连接数据库');
-  const db = connectDb('./Database/basedb.db');
-  console.log('数据库连接成功');
-
-  console.log('正在初始化数据库');
-  for (let i = 0; i < createTableSqlList.length; i++) {
-    let table = createTableSqlList[i];
-    await createTable(db, table.tableCode, table.tableName, table.sql);
-  }
-  console.log('数据库初始化成功');
-
-  return db;
-}
 
 const initExpress = () => {
   const app = express()
@@ -52,13 +37,13 @@ const initExpress = () => {
   })
 
   app.post('/news/get', async function (req, res) {
-    res.send(await getLatestNews(req.body.groupId))
+    res.send(await getLatestNews(getParam(req, 'groupId')))
   })
 
   app.post('/news/add', async function (req, res) {
     res.send(await addNews({
-      groupId: req.body.groupId,
-      content: req.body.content,
+      groupId: getParam(req, 'groupId'),
+      content: getParam(req, 'content'),
     }))
   })
 
@@ -68,7 +53,7 @@ const initExpress = () => {
 }
 
 const init = async () => {
-  await initDb();
+  await initDb('./Database/basedb.db', createTableSqlList);
   initExpress();
 }
 
