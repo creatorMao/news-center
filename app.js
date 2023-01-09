@@ -1,6 +1,10 @@
 import express from 'express'
 import { connectDb, createTable } from './Helper/dbHelper.js'
 import { createTableSqlList } from './Database/createTable.js'
+import {
+  addNews,
+  getLatestNews
+} from './Service/news.js'
 
 const initDb = async () => {
 
@@ -47,8 +51,15 @@ const initExpress = () => {
     res.send('Hello World!')
   })
 
-  app.post('/news/get', function (req, res) {
-    res.send('11')
+  app.post('/news/get', async function (req, res) {
+    res.send(await getLatestNews(req.body.groupId))
+  })
+
+  app.post('/news/add', async function (req, res) {
+    res.send(await addNews({
+      groupId: req.body.groupId,
+      content: req.body.content,
+    }))
   })
 
   app.listen(port, () => {
