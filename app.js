@@ -32,15 +32,17 @@ const initExpress = () => {
     next()
   })
 
+  const getRoute = '/news/get'
+
   app.get('/', (req, res) => {
     res.send('Hello World!')
   })
 
-  app.post('/news/get', async function (req, res) {
+  app.all(getRoute, async function (req, res) {
     res.send(await getLatestNews(getParam(req, 'groupId')))
   })
 
-  app.post('/news/add', async function (req, res) {
+  app.all('/news/add', async function (req, res) {
     res.send(await addNews({
       groupId: getParam(req, 'groupId'),
       content: getParam(req, 'content'),
@@ -48,7 +50,7 @@ const initExpress = () => {
   })
 
   app.listen(port, () => {
-    console.log(`程序已启动，请访问${port}端口`)
+    console.log(`程序已启动，请访问http://localhost:${port}${getRoute}`)
   })
 }
 
