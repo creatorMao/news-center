@@ -1,13 +1,16 @@
 const getParam = (req, key) => {
+  let queryRes = "";
+  let bodyRes = "";
+
   if (req.query) {
-    return req.query[key]
+    queryRes = req.query[key]
   }
 
   if (req.body) {
-    return req.body[key]
+    bodyRes = req.body[key]
   }
 
-  return ""
+  return queryRes || bodyRes || ""
 }
 
 export {
