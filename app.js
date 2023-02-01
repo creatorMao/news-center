@@ -32,13 +32,11 @@ const initExpress = () => {
     next()
   })
 
-  const getRoute = '/news/get'
-
   app.get('/', (req, res) => {
-    res.send('Hello World!')
+    res.send('文档请参考：https://www.yuque.com/5zhimao/fmifvi/gu3gnevsshyeeq7x?singleDoc#')
   })
 
-  app.all(getRoute, async function (req, res) {
+  app.all('/news/get', async function (req, res) {
     res.send(await getLatestNews(getParam(req, 'groupId')))
   })
 
@@ -50,7 +48,7 @@ const initExpress = () => {
   })
 
   app.listen(port, () => {
-    console.log(`程序已启动，请访问http://localhost:${port}${getRoute}`)
+    console.log(`程序已启动，请访问http://localhost:${port}/`)
   })
 }
 
