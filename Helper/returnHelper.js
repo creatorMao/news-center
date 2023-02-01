@@ -6,6 +6,15 @@ const Ok = (msg = '请求成功', data = {}) => {
   }
 }
 
+const err = (msg = '请求失败', data = {}) => {
+  return {
+    state: 'err',
+    msg: msg,
+    data
+  }
+}
+
 export {
-  Ok
+  Ok,
+  err
 }
