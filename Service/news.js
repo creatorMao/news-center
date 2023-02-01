@@ -26,19 +26,26 @@ const getLatestNews = async (groupId) => {
   if (rawData.length != 0) {
     rawData = rawData[0]
   }
+  else {
+    rawData = {}
+  }
 
-  let rawContent = rawData['CONTENT']
+  let rawContent = rawData['CONTENT'] || ''
   let parsedContent = {}
+  let parseedSuccessFlag = true
   try {
     parsedContent = JSON.parse(rawContent)
   }
   catch {
     parsedContent = rawContent
+    parseedSuccessFlag = false
   }
 
   return Ok(undefined, {
-    ...rawData,
-    parsedContent
+    rawData,
+    rawContent,
+    parsedContent,
+    parseedSuccessFlag
   })
 }
 
