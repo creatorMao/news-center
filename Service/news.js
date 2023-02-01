@@ -6,9 +6,16 @@ const addNews = (news) => {
   let sql = `insert into NEWS(ID,GROUP_ID,CONTENT)
               values($id,$groupId,$content)
     `
+
+  const groupId = news["groupId"]
+
+  if (!groupId) {
+    return Ok('groupId不能为空！');
+  }
+
   runSql(undefined, sql, {
     $id: createGuid(),
-    $groupId: news["groupId"],
+    $groupId: groupId,
     $content: news["content"]
   });
 
@@ -16,6 +23,10 @@ const addNews = (news) => {
 }
 
 const getLatestNews = async (groupId) => {
+  if (!groupId) {
+    return Ok('groupId不能为空！');
+  }
+
   let sql = `
    select * from NEWS where GROUP_ID=$groupId order by imp_time desc limit 1
 `
