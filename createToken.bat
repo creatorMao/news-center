@@ -1,3 +1,3 @@
 chcp 65001
-node createToken.js
+call node createToken.js
 pause
