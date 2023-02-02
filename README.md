@@ -25,6 +25,5 @@
   
   然后设置`password`
 
-  最后双击`createToken.bat`或者执行`node createToken.js
-pause` 创建token，并在请求时带上token参数
+  最后双击`createToken.bat`或者执行`node createToken.js` 创建token，并在请求时带上token参数
 
