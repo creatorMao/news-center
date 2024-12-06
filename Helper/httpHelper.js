@@ -3,11 +3,11 @@ const getParam = (req, key = "") => {
   let bodyRes = "";
 
   if (req.query) {
-    queryRes = req.query[key] || req.query[key.toLowerCase];
+    queryRes = req.query[key] || req.query[key.toLowerCase()];
   }
 
   if (req.body) {
-    bodyRes = req.body[key] || req.query[key.toLowerCase];
+    bodyRes = req.body[key] || req.query[key.toLowerCase()];
   }
 
   return queryRes || bodyRes || "";
