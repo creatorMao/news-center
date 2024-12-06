@@ -64,7 +64,7 @@ const initExpress = () => {
     res.send(await getLatestNews(getParam(req, "groupId")));
   });
 
-  app.post("/news/add", async function (req, res) {
+  app.all("/news/add", async function (req, res) {
     res.send(
       await addNews({
         groupId: getParam(req, "groupId"),
