@@ -1,9 +1,14 @@
 const config = {
-  'port': 3000,
-  'docUrl': 'https://www.yuque.com/5zhimao/fmifvi/gu3gnevsshyeeq7x?singleDoc#',
-  'checkToken': false,
-  'secret': 'test',
-  'password': ''
+  port: 3000,
+  docUrl: "https://www.yuque.com/5zhimao/fmifvi/gu3gnevsshyeeq7x?singleDoc#",
+  checkToken: false,
+  secret: "test",
+  password: "",
+  token: process.env.NEWS_CENTER_TOKEN || "",
+};
+
+if (config.token || config.password) {
+  config.checkToken = true;
 }
 
-export default config
+export default config;
