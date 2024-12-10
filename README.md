@@ -22,13 +22,17 @@ docker run -d \
     news-center:latest
 ```
 
-- 请求 groupid 为 111 的分组
+- 请求 groupid 为 download 分组的最新一条消息
 
 ```
 http://xxxxxxx:998/news/get?groupid=download&token=123456789
 ```
 
+- 向 groupid 为 download 分组的推送一条消息
+
+```
 http://xxxxxxx:999/news/add?groupid=download&token=123456789&content=99
+```
 
 # 接口文档
 

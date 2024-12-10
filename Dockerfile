@@ -1,6 +1,7 @@
 # 代表基于哪个镜像
 FROM node:alpine
 
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
 RUN apk add -U tzdata
 RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 RUN apk del tzdata
@@ -17,7 +18,7 @@ WORKDIR /code
 # 创建镜像时，执行命令：安装依赖
 RUN npm install
 
-# 暴露端口：8080
+# 暴露端口：3000
 EXPOSE 3000
 
 # 容器启动后，执行npm run serve
