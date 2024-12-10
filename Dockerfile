@@ -1,6 +1,10 @@
 # 代表基于哪个镜像
 FROM node:alpine
 
+RUN apk add -U tzdata
+RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+RUN apk del tzdata
+
 # 创建镜像时，执行命令：创建文件夹
 RUN mkdir -p /code
 
