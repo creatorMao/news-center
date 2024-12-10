@@ -2,7 +2,7 @@
 FROM node:alpine
 
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
-RUN apk add -U tzdata
+RUN apk add --no-cache tzdata
 RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 RUN apk del tzdata
 
