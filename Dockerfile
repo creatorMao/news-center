@@ -16,11 +16,11 @@ COPY . /code
 WORKDIR /code
 
 # 创建镜像时，执行命令：安装依赖
-RUN npm config set registry https://registry.npmmirror.com/
-RUN npm install --verbose
+RUN yarn config set registry https://registry.npmmirror.com/
+RUN yarn install --verbose
 
 # 暴露端口：3000
 EXPOSE 3000
 
-# 容器启动后，执行npm run serve
-CMD [ "npm", "run", "start" ]
+# 容器启动后，执行yarn run serve
+CMD [ "yarn", "run", "start" ]
