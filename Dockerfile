@@ -17,7 +17,7 @@ WORKDIR /code
 
 # 创建镜像时，执行命令：安装依赖
 RUN npm config set registry https://registry.npmmirror.com/
-RUN npm install
+RUN npm install --verbose
 
 # 暴露端口：3000
 EXPOSE 3000
