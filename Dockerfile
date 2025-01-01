@@ -17,7 +17,7 @@ WORKDIR /code
 
 # 创建镜像时，执行命令：安装依赖
 RUN yarn config set registry https://registry.npmmirror.com/
-RUN yarn config set sqlite3_binary_host_mirror https://foxgis.oss-cn-shanghai.aliyuncs.com/
+RUN yarn config set sqlite3_binary_host_mirror http://npmmirror.com/mirrors/
 
 RUN yarn install --verbose
 
