@@ -16,12 +16,7 @@ COPY . /code
 WORKDIR /code
 
 # 创建镜像时，执行命令：安装依赖
-#RUN yarn config set registry https://registry.npmmirror.com/
-#RUN yarn config set sqlite3_binary_host_mirror http://npmmirror.com/mirrors/
-#RUN yarn config set disturl http://npmmirror.com/dist/
-#RUN npm install -g node-gyp
-
-RUN yarn install --verbose
+RUN yarn install
 
 # 暴露端口：3000
 EXPOSE 3000
