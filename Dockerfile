@@ -19,6 +19,7 @@ WORKDIR /code
 RUN yarn config set registry https://registry.npmmirror.com/
 RUN yarn config set sqlite3_binary_host_mirror http://npmmirror.com/mirrors/
 RUN yarn config set disturl http://npmmirror.com/dist/
+RUN yarn add node-gyp -g
 
 RUN yarn install --verbose
 
