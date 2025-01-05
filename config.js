@@ -1,5 +1,5 @@
 const config = {
-  port: 3000,
+  port: 3002,
   docUrl: "https://www.yuque.com/5zhimao/fmifvi/gu3gnevsshyeeq7x?singleDoc#",
   showDoc: process.env.NEWS_CENTER_SHOW_DOC,
   checkToken: false,
