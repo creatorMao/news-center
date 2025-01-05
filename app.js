@@ -7,7 +7,7 @@ import { err } from "./Helper/returnHelper.js";
 import config from "./config.js";
 import { getDecryptToken } from "./Helper/generatorHelper.js";
 
-let { checkToken, secret, password, docUrl, port } = config;
+let { checkToken, secret, password, docUrl, port, showDoc } = config;
 
 const authentication = function (req, res, next) {
   if (req.url == "/" || !checkToken) {
@@ -57,7 +57,11 @@ const initExpress = () => {
   });
 
   app.get("/", (req, res) => {
-    res.send(`文档请参考：${docUrl}`);
+    if (showDoc) {
+      res.send(`文档请参考：${docUrl}`);
+    } else {
+      res.send(`hello`);
+    }
   });
 
   app.all("/news/get", async function (req, res) {

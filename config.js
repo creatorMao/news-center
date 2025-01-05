@@ -1,6 +1,7 @@
 const config = {
   port: 3000,
   docUrl: "https://www.yuque.com/5zhimao/fmifvi/gu3gnevsshyeeq7x?singleDoc#",
+  showDoc: process.env.NEWS_CENTER_SHOW_DOC,
   checkToken: false,
   secret: "test",
   password: "",
