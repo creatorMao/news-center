@@ -19,6 +19,7 @@ docker run -d \
    --name news-center1 \
     -p 998:3000 \
     -e NEWS_CENTER_TOKEN=123456789 \
+    -v your dir/Database:/code/Database
     news-center:latest
 ```
 
