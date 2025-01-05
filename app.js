@@ -1,7 +1,7 @@
 import express from "express";
 import { initDb } from "./Helper/dbHelper.js";
 import { getParam } from "./Helper/httpHelper.js";
-import { createTableSqlList } from "./Database/createTable.js";
+import { createTableSqlList } from "./Scripts/createTable.js";
 import { addNews, getLatestNews } from "./Service/news.js";
 import { err } from "./Helper/returnHelper.js";
 import config from "./config.js";
